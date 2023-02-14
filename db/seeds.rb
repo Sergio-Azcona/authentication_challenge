@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-i = 1
+# User.create!(name: 'User One', email: 'notunique@example.com', password: 'mikepizza1258', password_confirmation:'mikepizza1258')
+# User.create!(name: "meg", email:"meg@test.com", password: "test123", password_confirmation: "test123")
+# User.create!(name: "Doe", email:"doe@test.com", password: "test32123", password_confirmation: "test123")
 
+i = 1
 20.times do 
     Movie.create(title: "Movie #{i} Title", rating: rand(1..10), description: "This is a description about Movie #{i}")
     i+=1

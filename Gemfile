@@ -43,6 +43,9 @@ group :development, :test do
     gem 'simplecov'
     gem 'launchy'
     gem 'rspec-rails'
+    gem 'pry-rails'
+    gem 'factory_bot_rails'
+    gem 'faker'
 end
 
 group :development do
