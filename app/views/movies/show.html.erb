@@ -3,3 +3,5 @@
 <p>Description: <%= @movie.description %></p>
 
 <p>Rating: <%= @movie.rating %>/10</p>
+
+<%= button_to "Find Top Rated Movies", movies_path(@user), method: :get %><br>

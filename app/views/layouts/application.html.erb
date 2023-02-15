@@ -11,7 +11,18 @@
 
   <body>
     <nav>
-    <%= link_to "Home", root_path %>
+      <div style="position:fixed; padding: 1em; top: 0; right: 0;">
+        <br><% link_to "Home", root_path if !current_page?(root_path) %>
+          
+        <% if current_user %>
+          <%= link_to "Log Out", logout_path%>
+            <br><%= link_to "Dasboard", dashboard_path(current_user) if !current_page?(dashboard_path(current_user)) %>
+        <% else %>
+          <%= link_to "Log In", login_path if !current_page?(login_path)%>
+          <br><%= link_to "Create New User", register_path if !current_page?(register_path) %>
+        <% end %>
+
+      </div>
     </nav>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
