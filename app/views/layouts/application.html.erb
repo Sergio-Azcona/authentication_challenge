@@ -12,22 +12,24 @@
   <body>
     <nav>
       <div style="position:fixed; padding: 1em; top: 0; right: 0;">
-        <br><% link_to "Home", root_path if !current_page?(root_path) %>
-          
+        <%= link_to "Home", root_path if !current_page?(root_path) %>
+          <br>
         <% if current_user %>
           <%= link_to "Log Out", logout_path%>
-            <br><%= link_to "Dasboard", dashboard_path(current_user) if !current_page?(dashboard_path(current_user)) %>
+            <br><%= link_to "Dashboard", dashboard_path(current_user) if !current_page?(dashboard_path(current_user)) %>
         <% else %>
           <%= link_to "Log In", login_path if !current_page?(login_path)%>
           <br><%= link_to "Create New User", register_path if !current_page?(register_path) %>
         <% end %>
-
       </div>
+
+  
+
     </nav>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
     <% end %>
-    <h1>Viewing Party Lite</h1>
+      <strong><h1 style="font-size: 300%;font-family:courier; text-align:center; color: MAROON">Viewing Party</h1></strong>
     <%= yield %>
   </body>
 </html>

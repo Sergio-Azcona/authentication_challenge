@@ -1,9 +1,44 @@
-<h1>Top Rated Movies</h1>
+<center><%= button_to "Discover Page", discover_dashboard_path(@user), method: :get %>
+<br>
 
-<% @movies.each do |movie| %>
-    <div id="movie-<%=movie.id%>">
-        <ul><%= link_to movie.title, movie_path(@user,movie) %> -- Rating: <%= movie.rating %>/10</ul>
-    </div>
+<% if @searched %>
+    <h2>Movie Results for:"<i><%= @searched %></i>"</h2>
+<% else %>
+    <h2>Top Rated Movies</h2>
 <% end %>
 
-<%= button_to "Find Top Rated Movies", movies_path(@user), method: :get %><br>
+<style>
+table {
+  font-family: courier;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px;
+  border-style: groove;
+  text-align: center; 
+  padding: 4px;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+</style>
+
+<table>
+    <tr>
+        <strong><th>Movies</th>
+        <th>Ratings</th></strong>
+    </tr>
+        <% @movies.each do |movie| %>
+    <tr>
+    <div id="movie-<%=movie.id%>">
+        <td><ul><%= link_to movie.title, dashboard_movie_path(@user,movie) %></td> 
+        <td><%= movie.vote_average %>/10</ul></td>
+    </div>
+    </tr>
+        <% end %>
+</table>
+
+</center>

@@ -10,8 +10,8 @@
 # User.create!(name: "meg", email:"meg@test.com", password: "test123", password_confirmation: "test123")
 # User.create!(name: "Doe", email:"doe@test.com", password: "test32123", password_confirmation: "test123")
 
-i = 1
-20.times do 
-    Movie.create(title: "Movie #{i} Title", rating: rand(1..10), description: "This is a description about Movie #{i}")
-    i+=1
-end 
+# i = 1
+# 20.times do 
+#     Movie.create(title: "Movie #{i} Title", rating: rand(1..10), description: "This is a description about Movie #{i}")
+#     i+=1
+# end 
