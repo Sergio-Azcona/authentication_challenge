@@ -5,7 +5,7 @@ class UsersController <ApplicationController
     end
     
     def new 
-        @user = User.new
+        @user = User.new #needed for strong params
     end 
 
     def show 
@@ -32,7 +32,8 @@ class UsersController <ApplicationController
 
     def logout_user
         # require 'pry';binding.pry
-        session.destroy
+        session.destroy #destroy all data from the session
+        # session.delete(‘id’) or session[:id] = nil #destroy id but keeps data from the session
         flash[:success] = "Logout Complete!"
         redirect_to root_path
     end
@@ -42,9 +43,10 @@ class UsersController <ApplicationController
         if user.save
             session[:id] = user.id
             flash[:success] = "Welcome, #{user.name}!"
-            redirect_to user_path(user)
+            redirect_to dashboard_path(user)
         else  
             flash[:error] = user.errors.full_messages.to_sentence
+            # require 'pry';binding.pry
             redirect_to register_path
         end 
     end 
@@ -52,7 +54,9 @@ class UsersController <ApplicationController
     private 
 
     def user_params 
+        # require 'pry';binding.pry
         params[:user][:email].downcase!
+        # require 'pry';binding.pry
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end 
 end 
